@@ -1,29 +1,17 @@
 package cyberdefender;
-
 import java.util.ArrayList;
-
 public class Main {
-
     public static void main(String[] args) {
-
         // 入力処理
         InputManager input = new InputManager();
-
         // 問題管理
         QuestionManager questionManager = new QuestionManager();
-
         // 解答履歴
         ArrayList<AnswerRecord> answerRecords = new ArrayList<>();
-
         // 統計
         Statistics statistics = new Statistics();
-
         // ゲーム
-        Game game = new Game(
-                input,
-                questionManager,
-                answerRecords
-        );
+        Game game = new Game(input,questionManager,answerRecords);
 
         // サンプル問題
         String[] choices = {
@@ -48,18 +36,10 @@ public class Main {
         questionManager.addQuestion(question);
 
         // 教師を作成
-        Teacher teacher = new Teacher(
-                1,
-                "田中先生",
-                "teacher"
-        );
+        Teacher teacher = new Teacher(1,"田中先生","teacher");
 
         // 生徒を作成
-        Student student = new Student(
-                101,
-                "田中太郎",
-                "student"
-        );
+        Student student = new Student(101,"田中太郎","student");
 
         // メインメニュー
         while (true) {
@@ -72,11 +52,7 @@ public class Main {
             System.out.println("2. 生徒");
             System.out.println("3. 終了");
 
-            int choice = input.readInt(
-                    "選択してください：",
-                    1,
-                    3
-            );
+            int choice = input.readInt("選択してください：",1,3);
 
             // 終了
             if (choice == 3) {
@@ -86,29 +62,14 @@ public class Main {
 
             // 教師
             if (choice == 1) {
-
-                teacherMenu(
-                        input,
-                        teacher,
-                        questionManager,
-                        statistics,
-                        answerRecords
-                );
+                teacherMenu(input,teacher,questionManager,statistics,answerRecords);
             }
 
             // 生徒
             else if (choice == 2) {
-
-                studentMenu(
-                        input,
-                        student,
-                        game,
-                        statistics,
-                        answerRecords
-                );
+                studentMenu(input,student,game,statistics,answerRecords);
             }
         }
-
         // Scannerを終了
         input.close();
     }
@@ -120,58 +81,46 @@ public class Main {
             QuestionManager questionManager,
             Statistics statistics,
             ArrayList<AnswerRecord> answerRecords) {
-
-        while (true) {
-
+       
+    	while (true) {
             // 教師メニューを表示
             teacher.showMenu();
-
             int choice = input.readInt("選択してください：",1,8);
-
             // 問題登録
             if (choice == 1) {
                 questionManager.createQuestion(input);
             }
-
             // 問題一覧
             else if (choice == 2) {
                 questionManager.showQuestions();
             }
-
             // 問題更新
             else if (choice == 3) {
                 questionManager.updateQuestion(input);
             }
-
             // 問題削除
             else if (choice == 4) {
                 questionManager.deleteQuestion(input);
             }
-
             // 問題検索
             else if (choice == 5) {
                 questionManager.searchQuestion(input);
             }
-
             // 並び替え
             else if (choice == 6) {
                 questionManager.sortQuestions(input);
             }
-
             // 学習データ
             else if (choice == 7) {
                 statistics.showStatistics(answerRecords);
             }
-
             // ログアウト
             else if (choice == 8) {
-
                 System.out.println("ログアウトしました。");
                 break;
             }
         }
     }
-
     // 生徒メニュー
     private static void studentMenu(
             InputManager input,
@@ -181,15 +130,9 @@ public class Main {
             ArrayList<AnswerRecord> answerRecords) {
 
         while (true) {
-
             // 生徒メニューを表示
             student.showMenu();
-
-            int choice = input.readInt(
-                    "選択してください：",
-                    1,
-                    4
-            );
+            int choice = input.readInt("選択してください：",1,4);
 
             // 問題を解く
             if (choice == 1) {
@@ -203,15 +146,10 @@ public class Main {
 
             // 自分の成績
             else if (choice == 3) {
-                statistics.showStudentStatistics(
-                        answerRecords,
-                        student.getId()
-                );
+                statistics.showStudentStatistics(answerRecords,student.getId());
             }
-
             // ログアウト
             else if (choice == 4) {
-
                 System.out.println("ログアウトしました。");
                 break;
             }

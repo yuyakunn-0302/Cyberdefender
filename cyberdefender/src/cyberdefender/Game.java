@@ -1,70 +1,45 @@
 package cyberdefender;
-
 import java.util.List;
-
 public class Game {
-
     // 入力処理
     private InputManager input;
-
     // 問題管理
     private QuestionManager questionManager;
-
     // 解答履歴
     private List<AnswerRecord> answerRecords;
-
     // ゲームを作成
-    public Game(
-            InputManager input,
-            QuestionManager questionManager,
-            List<AnswerRecord> answerRecords) {
-
+    public Game(InputManager input,QuestionManager questionManager,List<AnswerRecord> answerRecords) {
         this.input = input;
         this.questionManager = questionManager;
         this.answerRecords = answerRecords;
     }
-
     // ゲーム開始
     public void start(Student student) {
-
         System.out.println();
         System.out.println("==============================");
         System.out.println("       CYBERDEFENDER");
         System.out.println("==============================");
-
         // 問題がない場合
         if (questionManager.getQuestions().isEmpty()) {
-
             System.out.println("問題がありません。");
-
             return;
         }
-
         // 得点
         int score = 0;
-
         // 問題番号
         int number = 1;
-
         // 問題を順番に出す
-        for (Question question :
-                questionManager.getQuestions()) {
-
+        for (Question question :questionManager.getQuestions()) {
             System.out.println();
             System.out.println("第" + number + "問");
-
             // 問題を表示
             question.showQuestion();
-
             // 回答
             int answer =input.readInt("回答：",1,4);
-
             // 正解判定
             boolean correct =answer == question.getAnswer();
-
             // 1問の得点
             int point = 0;
-
             // 正解
             if (correct) {
                 System.out.println("★ 正解！");
