@@ -35,9 +35,7 @@ public class Game {
         // 問題がない場合
         if (questionManager.getQuestions().isEmpty()) {
 
-            System.out.println(
-                    "問題がありません。"
-            );
+            System.out.println("問題がありません。");
 
             return;
         }
@@ -53,31 +51,22 @@ public class Game {
                 questionManager.getQuestions()) {
 
             System.out.println();
-            System.out.println(
-                    "第" + number + "問"
-            );
+            System.out.println("第" + number + "問");
 
             // 問題を表示
             question.showQuestion();
 
             // 回答
-            int answer =
-                    input.readInt(
-                            "回答：",
-                            1,
-                            4
-                    );
+            int answer =input.readInt("回答：",1,4);
 
             // 正解判定
-            boolean correct =
-                    answer == question.getAnswer();
+            boolean correct =answer == question.getAnswer();
 
             // 1問の得点
             int point = 0;
 
             // 正解
             if (correct) {
-
                 System.out.println("★ 正解！");
                 point = 10;
                 score += 10;
@@ -85,35 +74,22 @@ public class Game {
 
             // 不正解
             else {
-
                 System.out.println("✕ 不正解...");
-                System.out.println(
-                        "正解は"
-                        + question.getAnswer()
-                        + "番です。"
-                );
+                System.out.println( "正解は" + question.getAnswer()+ "番です。");
             }
 
             // 解説
             System.out.println();
             System.out.println("【解説】");
-            System.out.println(
-                    question.getExplanation()
+            System.out.println(question.getExplanation()
             );
 
             // 解答履歴
-            AnswerRecord record =
-                    new AnswerRecord(
-                            student.getId(),
-                            question.getId(),
-                            answer,
-                            correct,
-                            point
+            AnswerRecord record =new AnswerRecord(student.getId(),question.getId(),answer,correct, point
                     );
 
             // 履歴を保存
             answerRecords.add(record);
-
             number++;
         }
 
@@ -121,9 +97,7 @@ public class Game {
         System.out.println();
         System.out.println("==============================");
         System.out.println("ゲーム終了！");
-        System.out.println(
-                "あなたの得点：" + score + "点"
-        );
+        System.out.println("あなたの得点：" + score + "点");
         System.out.println("==============================");
     }
 
@@ -136,54 +110,36 @@ public class Game {
         boolean found = false;
 
         // 履歴を確認
-        for (AnswerRecord record :
-                answerRecords) {
+        for (AnswerRecord record :answerRecords) {
 
             if (record.getStudentId() == studentId) {
 
                 found = true;
 
-                System.out.println(
-                        "問題ID："
-                        + record.getQuestionId()
-                );
+                System.out.println("問題ID："+ record.getQuestionId());
 
                 // 正解か確認
                 if (record.isCorrect()) {
 
-                    System.out.println(
-                            "判定：正解"
-                    );
+                    System.out.println("判定：正解");
 
                 } else {
 
-                    System.out.println(
-                            "判定：不正解"
-                    );
+                    System.out.println("判定：不正解" );
                 }
 
-                System.out.println(
-                        "得点："
-                        + record.getScore()
-                );
+                System.out.println("得点："+ record.getScore());
 
-                System.out.println(
-                        "日時："
-                        + record.getDate()
-                );
+                System.out.println("日時："+ record.getDate());
 
-                System.out.println(
-                        "----------------------"
-                );
+                System.out.println("----------------------");
             }
         }
 
         // 履歴がない場合
         if (!found) {
 
-            System.out.println(
-                    "まだ解答履歴がありません。"
-            );
+            System.out.println("まだ解答履歴がありません。");
         }
     }
 }
