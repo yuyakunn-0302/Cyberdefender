@@ -7,7 +7,7 @@ public class AnswerRecord {
     private boolean correct;
     private int score;
     private LocalDateTime date;
-    // 解答履歴を作成
+
     public AnswerRecord(int studentId,int questionId,int selectedAnswer,boolean correct,int score) {
         this.studentId = studentId;
         this.questionId = questionId;
@@ -16,27 +16,22 @@ public class AnswerRecord {
         this.score = score;
         this.date = LocalDateTime.now();
     }
-    // 生徒IDを取得
+
     public int getStudentId() {
         return studentId;
     }
-    // 問題IDを取得
     public int getQuestionId() {
         return questionId;
     }
-    // 選択した答えを取得
     public int getSelectedAnswer() {
         return selectedAnswer;
     }
-    // 正解か確認
     public boolean isCorrect() {
         return correct;
     }
-    // 得点を取得
     public int getScore() {
         return score;
     }
-    // 日時を取得
     public LocalDateTime getDate() {
         return date;
     }

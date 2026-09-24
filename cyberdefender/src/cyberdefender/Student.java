@@ -1,8 +1,6 @@
 package cyberdefender;
 
 public class Student extends User {
-
-    // 生徒を作成
     public Student(
             int id,
             String name,
@@ -11,9 +9,7 @@ public class Student extends User {
         super(id, name, password);
     }
 
-    // 生徒メニューを表示
     public void showMenu() {
-
         System.out.println();
         System.out.println("========== 生徒メニュー ==========");
         System.out.println("1. 問題を解く");
