@@ -46,10 +46,10 @@ public class Main{
 				while(true) {
 					student.showMenu();
 					int menu = input.readInt("選択してください:",1,4);
-					if(menu == 1) {
+					if(menu == 1) {	
 						game.play(student);
 					}else if(menu == 2) {
-						game.equals(student);
+						game.showHistory(student.getId());
 					}else if(menu == 3) {
 						statistics.showStudentStatistics(answerRecords, student.getId());
 					}else if(menu == 4) {

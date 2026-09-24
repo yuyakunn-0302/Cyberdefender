@@ -69,4 +69,30 @@ public class Game{
 	        );
 	        records.add(record);
 	    }
+	    public void showHistory(int studentId){
+	    	System.out.println();
+	    	System.out.println("=====解答履歴=====");
+	    	
+	    	boolean found = false;
+	    	
+	    	for(AnswerRecord record : records) {
+	    		if(record.getStudentId() == studentId) {
+	    			found = true;
+	    			System.out.println("問題ID" + record.getQuestionId());
+	    			System.out.println("選択した答え" + record.getSelectedAnswer());
+	    			
+	    			if(record.isCorrect()) {
+	    				System.out.println("結果:合格");
+	    			}else {
+	    				System.out.println("結果:不合格");
+	    			}
+	    			System.out.println("得点" + record.getScore());
+	    			System.out.println("日時" + record.getDate());
+	    		    System.out.println("--------------------");
+	    		}
+	    	}
+	    	if(!found) {
+	    		System.out.println("まだ解答履歴がありません");
+	    	}
+	    }
 	}

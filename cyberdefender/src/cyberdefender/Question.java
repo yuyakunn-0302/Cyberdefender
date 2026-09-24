@@ -8,6 +8,7 @@ public class Question {
     private String explanation;
     private String category;
     private String difficulty;
+    
     public Question(
             int id,
             String text,
@@ -71,8 +72,7 @@ public class Question {
         
         for (int i = 0; i < choices.length; i++) {
             System.out.println(
-                    (i + 1) + ". " + choices[i]
-            );
+                    (i + 1) + ". " + choices[i]);
         }
         System.out.println("分野：" + category);
         System.out.println("難易度：" + difficulty);
