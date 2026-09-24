@@ -215,12 +215,9 @@ public class QuestionManager {
 
         if (choice == 1) {
             questions.sort(Comparator.comparingInt(Question::getId));
-        } else 
-        	if (choice == 2) {
+        } else if (choice == 2) {
             questions.sort(Comparator.comparing(Question::getDifficulty));
-        // 分野順
-        } else
-        	if (choice == 3) {
+        } else if (choice == 3) {
             questions.sort(Comparator.comparing(Question::getCategory));
         }
         System.out.println("並び替えました。");
