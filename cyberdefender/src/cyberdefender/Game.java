@@ -82,9 +82,9 @@ public class Game{
 	    			System.out.println("選択した答え" + record.getSelectedAnswer());
 	    			
 	    			if(record.isCorrect()) {
-	    				System.out.println("結果:合格");
+	    				System.out.println("結果:正解");
 	    			}else {
-	    				System.out.println("結果:不合格");
+	    				System.out.println("結果:不正解");
 	    			}
 	    			System.out.println("得点" + record.getScore());
 	    			System.out.println("日時" + record.getDate());
